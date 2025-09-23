@@ -10,3 +10,4 @@ django-cors-headers
 whitenoise                 # static files on Render
 django-cloudinary-storage  # optional — easy media hosting
 pytest-django              # tests (optional)
+drf-nested-routers        # nested routes for comments
