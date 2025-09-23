@@ -1,0 +1,12 @@
+Django==4.2
+djangorestframework
+djangorestframework-simplejwt
+Pillow
+psycopg2-binary            # for Postgres locally or in Docker
+django-environ             # for env vars
+drf-spectacular            # OpenAPI + swagger UI
+gunicorn
+django-cors-headers
+whitenoise                 # static files on Render
+django-cloudinary-storage  # optional — easy media hosting
+pytest-django              # tests (optional)
