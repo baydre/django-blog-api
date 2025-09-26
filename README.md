@@ -181,4 +181,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-For questions about this technical task, please contact the Communisolve development team.
+For questions about this technical task, please contact [Yasir Musa](baydreafrica@gmail.com).
