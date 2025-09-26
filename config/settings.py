@@ -140,7 +140,7 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     ],
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
-    # 'DEFAULT_PAGINATION_CLASS': 'blog.pagination.CustomPageNumberPagination',
+    'DEFAULT_PAGINATION_CLASS': 'blog.models.CustomPageNumberPagination',
     'PAGE_SIZE': PAGINATION_PAGE_SIZE,
 }
 
