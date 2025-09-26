@@ -16,18 +16,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 from rest_framework.routers import DefaultRouter
-from blog.views import PostViewSet, CommentCreateView, signup_view
+from blog.views import PostViewSet, CommentListCreateView, signup_view
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 router = DefaultRouter()
 router.register(r'posts', PostViewSet, basename='posts')
-router.register(r'posts/(?P<post_pk>\d+)/comments', CommentCreateView, basename='post-comments')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    # Nested route for comments
+    path('api/posts/<int:post_id>/comments/', CommentListCreateView.as_view(), name='post-comments'),
     path('api/signup/', signup_view, name='signup'),
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='blog-api-docs'),
@@ -35,3 +38,7 @@ urlpatterns = [
     path('api/auth/jwt/create/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/auth/jwt/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
+
+# Serve media files in development
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
